@@ -1,0 +1,77 @@
+# CAR NUMBER PLATE DETECTIO
+
+<p align="justify">
+This application detects number plate from image input and recognizes text through Optical Character Recognition. It saves result in database and display them in user's dashboard.
+</p>
+
+## Tech Stack
+
+![Image](https://github.com/user-attachments/assets/5ffb988d-509c-4129-818b-182e13587503)
+
+## Software Architecture
+
+1. Activity Diagram
+
+<p align="center">
+<img src="">
+</p>
+
+2. Class Diagram
+
+<p align="center">
+<img src="">
+</p>
+
+## Setup Guide:
+
+Make sure to install <a href="https://www.python.org/downloads/release/python-3116/">Python 3.11.6</a>, <a href="https://code.visualstudio.com/download">VS Code</a>, <a href="https://nodejs.org/en/download">Node.js</a> and <a href="https://git-scm.com/downloads">Git</a> in your system to run this project.
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/<username>/number-plate-detection.git
+```
+
+2. Navigate to backend folder, Install dependencies & run the project
+
+```bash
+cd number-plate-detection/backend
+```
+
+```bash
+pip install -r requirements.txt
+```
+
+```bash
+python app.py
+```
+
+3. Navigate to frontend folder, Install dependencies & run the project
+
+```bash
+cd number-plate-detection/frontend
+```
+
+```bash
+npm install
+```
+
+```bash
+npm run dev
+```
+
+4. Access website at : http://localhost:5173
+
+## Project Images
+
+<p align="center">
+<img src="">
+</p>
+
+<p align="center">
+<img src=""></img>
+</p>
+
+<p align="center">
+<img src=""></img>
+</p>

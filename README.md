@@ -1,4 +1,4 @@
-# CAR NUMBER PLATE DETECTIO
+# CAR NUMBER PLATE DETECTION
 
 <p align="justify">
 This application detects number plate from image input and recognizes text through Optical Character Recognition. It saves result in database and display them in user's dashboard.

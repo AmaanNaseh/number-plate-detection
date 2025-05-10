@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import carIcon from "../assets/car.png";
+import { backend_API } from "../config/Config";
 
 export default function Signup() {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
@@ -10,7 +11,7 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/signup", form);
+      await axios.post(`${backend_API}/signup`, form);
       alert("Signup successful!");
       navigate("/login");
     } catch (err) {

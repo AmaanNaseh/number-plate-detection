@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { backend_API } from "../config/Config";
 
 export default function Profile() {
   const [profile, setProfile] = useState({ name: "", email: "" });
@@ -11,7 +12,7 @@ export default function Profile() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/profile", {
+        const res = await axios.get(`${backend_API}/profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setProfile(res.data);
@@ -35,7 +36,7 @@ export default function Profile() {
 
   const handleUpdate = async () => {
     try {
-      const res = await axios.put("http://localhost:5000/profile", newData, {
+      const res = await axios.put(`${backend_API}/profile`, newData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert("Profile updated");
@@ -53,7 +54,7 @@ export default function Profile() {
       return;
 
     try {
-      await axios.delete("http://localhost:5000/profile", {
+      await axios.delete(`${backend_API}/profile`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       localStorage.removeItem("token");

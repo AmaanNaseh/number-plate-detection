@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
+import { backend_API } from "../config/Config";
 
 export default function Upload() {
   const [file, setFile] = useState(null);
@@ -54,7 +55,7 @@ export default function Upload() {
     const token = localStorage.getItem("token");
 
     try {
-      const res = await axios.post("http://localhost:5000/upload", formData, {
+      const res = await axios.post(`${backend_API}/upload`, formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

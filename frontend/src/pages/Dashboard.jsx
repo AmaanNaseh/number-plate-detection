@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { backend_API } from "../config/Config";
 
 export default function Dashboard() {
   const [records, setRecords] = useState([]);
@@ -10,10 +11,15 @@ export default function Dashboard() {
   }, [search]);
 
   const fetchData = async () => {
-    const res = await axios.get(
-      `http://localhost:5000/records?search=${search}`
-    );
-    setRecords(res.data);
+    const token = localStorage.getItem("token");
+    try {
+      const res = await axios.get(`${backend_API}/records?search=${search}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setRecords(res.data);
+    } catch (err) {
+      console.error("Failed to fetch user records", err);
+    }
   };
 
   const deleteRecord = async (filename) => {
@@ -21,7 +27,7 @@ export default function Dashboard() {
 
     const token = localStorage.getItem("token");
     try {
-      await axios.delete(`http://localhost:5000/record/${filename}`, {
+      await axios.delete(`${backend_API}/record/${filename}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setRecords((prev) => prev.filter((r) => r.filename !== filename));

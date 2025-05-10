@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import carIcon from "../assets/car.png";
+import { backend_API } from "../config/Config";
 
 export default function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -10,7 +11,8 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/login", form);
+      const res = await axios.post(`${backend_API}/login`, form);
+      backend_API;
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", res.data.name);
       navigate("/");

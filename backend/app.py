@@ -59,10 +59,19 @@ def upload():
 
 @app.route("/records", methods=["GET"])
 def get_records():
-    search = request.args.get("search", "")
-    query = {"number_plate": {"$regex": search, "$options": "i"}} if search else {}
-    result = list(records.find(query, {"_id": 0, "number_plate": 1, "timestamp": 1, "filename": 1}))
+    token = request.headers.get("Authorization", "").split()[1]
+    user_email = verify_token(token)
+    if not user_email:
+        return jsonify({"error": "Invalid token"}), 401
 
+    search = request.args.get("search", "")
+    query = {
+        "user_email": user_email
+    }
+    if search:
+        query["number_plate"] = {"$regex": search, "$options": "i"}
+
+    result = list(records.find(query, {"_id": 0, "number_plate": 1, "timestamp": 1, "filename": 1}))
     for r in result:
         r["image_url"] = f"http://localhost:5000/uploads/{r['filename']}"
     return jsonify(result)

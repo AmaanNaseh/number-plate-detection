@@ -2,6 +2,7 @@ Flask
 flask-cors
 pymongo
 PyJWT
+requests
 python-dotenv
 Pillow
 pytesseract

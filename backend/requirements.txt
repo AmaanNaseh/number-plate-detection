@@ -7,4 +7,6 @@ python-dotenv
 Pillow
 pytesseract
 Werkzeug
+Werkzeug
+opencv-python
 gunicorn
